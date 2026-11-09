@@ -1,12 +1,10 @@
 #!/usr/bin/env python3
-"""Aggiunge a ogni GeoJSON di dati/ il campo "Dettagli": il testo del popup di uMap.
+"""Aggiunge a ogni GeoJSON di dati/ il campo "Dettagli": il testo dei popup della mappa web.
 
 Uso:  python3 -I scripts/dettagli_popup.py
 
-uMap non sa nascondere le righe vuote di un modello di popup: il testo viene quindi
-preparato qui, con la sintassi di uMap (**grassetto**, [[link|testo]]), e il modello
-del livello in uMap è solo:  # {Title}  +  {Dettagli}.
-Etichette e link sono gli stessi dei popup di index.html.
+Il testo è preparato qui, senza righe vuote, con una sintassi minima
+(**grassetto**, [[link|testo]]) che index.html converte in HTML (funzione daDettagli).
 Lo script è idempotente e conserva la formattazione di ciascun file.
 """
 import json
