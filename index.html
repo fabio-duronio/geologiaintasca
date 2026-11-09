@@ -143,7 +143,7 @@
   // ---------- Utilità ----------
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c =>
     ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  // Il campo "Dettagli" usa la sintassi di uMap (**grassetto**, [[url|testo]]): stessa resa nelle due mappe
+  // Il campo "Dettagli" (scripts/dettagli_popup.py) usa **grassetto** e [[url|testo]]: qui diventa HTML
   const daDettagli = t => esc(t)
     .replace(/\*\*(.+?)\*\*/g, '<b>$1</b>')
     .replace(/\[\[(https?:\/\/[^|\]]+)\|([^\]]+)\]\]/g, (m, u, txt) => `<a href="${u}" target="_blank" rel="noopener">${txt}</a>`)
@@ -594,7 +594,7 @@
     return d;
   };
 
-  // ---------- Testata e informazioni (stessi testi di uMap e del README) ----------
+  // ---------- Testata e informazioni (stessi testi del README) ----------
   const testata = L.control({ position: 'topleft' });
   testata.onAdd = () => {
     const d = L.DomUtil.create('div', 'riquadro testata');

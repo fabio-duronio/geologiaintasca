@@ -41,7 +41,7 @@ jobs:
       - name: Ricostruisci il livello
         run: python3 -I scripts/build_altre_riviste.py "$RUNNER_TEMP/municipalities.geojson" | tee "$RUNNER_TEMP/esito.txt"
 
-      - name: Testo dei popup per uMap
+      - name: Testo dei popup della mappa
         run: python3 -I scripts/dettagli_popup.py
 
       - name: Valida

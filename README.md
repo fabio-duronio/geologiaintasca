@@ -2,13 +2,13 @@
 
 Indice geografico delle risorse cartografiche geologiche italiane. Riunisce i rimandi a dati di istituzioni nazionali, enti regionali e ricerca accademica, oggi distribuiti su portali diversi. Nasce dalle pagine di divulgazione geoscientifica [Geologiaintasca](https://www.facebook.com/profile.php?id=61565694163261).
 
-[**Mappa web (GitHub Pages)**](https://fabio-duronio.github.io/geologiaintasca/) · [Mappa uMap](https://umap.openstreetmap.fr/it/map/geologiaintasca-cartografia-geologica-italiana_1338725)
+[**Apri la mappa**](https://fabio-duronio.github.io/geologiaintasca/)
 
 ---
 
 ## Dataset
 
-I dati sono file GeoJSON nella cartella `dati/`, letti sia dalla mappa web sia da uMap.
+I dati sono file GeoJSON nella cartella `dati/`, letti dalla mappa web (`index.html`).
 
 | Livello | File | Elementi (nov. 2026) | Fonte |
 |---|---|---|---|
@@ -19,7 +19,7 @@ I dati sono file GeoJSON nella cartella `dati/`, letti sia dalla mappa web sia d
 | Altre riviste | `dati/altre_riviste/altre_riviste.geojson` | 4 pubblicazioni | Selezione manuale + confini ISTAT |
 | Geoportali regionali | `dati/geoportali_regionali/geoportali_regionali.geojson` | 21 enti | Selezione manuale + confini ISTAT |
 
-Campi comuni a tutti i livelli: `Title`, `URL`, `Location`, `Type`. Il campo `Dettagli` contiene il testo del popup di uMap (stesse etichette e link di `index.html`), generato da `scripts/dettagli_popup.py`.
+Campi comuni a tutti i livelli: `Title`, `URL`, `Location`, `Type`. Il campo `Dettagli` contiene il testo dei popup della mappa web, generato da `scripts/dettagli_popup.py`.
 
 ### 1. Cartografia ufficiale (Progetto CARG)
 Fogli della Carta Geologica d'Italia alla scala 1:50.000, con lo stato di realizzazione indicato su **[CARG-GATE](https://progetto-carg.isprambiente.it/cartografiaCARG/index.php?source=cartageologica)** (ISPRA). **Si aggiorna da solo ogni lunedì.**
@@ -53,11 +53,6 @@ Articoli del *Journal of Maps* su aree italiane, in due livelli. Il punto indica
 
 *Fonte: metadati [Crossref](https://www.crossref.org/) (ISSN 1744-5647); confini ISTAT per la localizzazione.*
 
-**In uMap** il livello regionale si aggiunge come livello con dati remoti:
-* URL: `https://raw.githubusercontent.com/fabio-duronio/geologiaintasca/main/dati/journal_of_maps/jom_regionali.geojson`
-* tipo di livello **Cluster**: gli articoli della stessa regione hanno le stesse coordinate e, senza cluster, solo l'ultimo sarebbe cliccabile;
-* modello del popup come gli altri livelli: `# {Title}` + `{Dettagli}`; nascosto all'apertura della mappa.
-
 ### 3b. Altre riviste (selezione manuale)
 Carte geologiche allegate ad articoli di riviste diverse dal *Journal of Maps* (es. *Geological Field Trips and Maps*), aggiunte **solo quando un post di Geologiaintasca riguarda una carta allegata**. Nessuna ricerca automatica: queste riviste pubblicano poche carte e molti contributi senza carta, quindi un indice automatico richiederebbe comunque un filtro a mano.
 * **Criteri:** territorio italiano, carta allegata all'articolo (tavola o materiale supplementare), Open Access con licenza aperta dichiarata sulla pagina dell'articolo.
@@ -66,7 +61,7 @@ Carte geologiche allegate ad articoli di riviste diverse dal *Journal of Maps* (
 
 *Fonte: pagine degli articoli citati; confini ISTAT per la localizzazione.*
 
-### 4. Geologia ISPRA (solo nella mappa web)
+### 4. Geologia ISPRA
 Due livelli di visualizzazione forniti dai servizi WMS del Servizio Geologico d'Italia, spenti all'apertura. Le immagini e le informazioni al clic arrivano direttamente da ISPRA: il repository non ne conserva copia.
 * **Geologia CARG 1:25.000:** unità geologiche, depositi quaternari, limiti geologici, elementi tettonici, elementi strutturali e giaciture dei fogli CARG disponibili nel servizio (210 a novembre 2026), visibili da zoom 11.
 * **Geologia 1:100.000:** unità geologiche, limiti, tettonica, tracce delle sezioni, stratimetria e simboli puntuali (sondaggi, pozzi, miniere, emissioni gassose, cave, forme carsiche, località d'interesse, sorgenti) della Carta Geologica d'Italia 1:100.000 su tutto il territorio. Unità e limiti sono visibili da zoom 10, gli altri elementi da zoom 11-12.
