@@ -422,6 +422,28 @@
   {
    "type": "Feature",
    "properties": {
+    "Title": "Geological map of the External Ligurian Units in western Monferrato (Tertiary Piedmont Basin, NW Italy)",
+    "DOI": "10.1080/17445647.2012.757711",
+    "URL": "https://doi.org/10.1080/17445647.2012.757711",
+    "Location": "Lauriano (TO)",
+    "Type": "Research Map",
+    "Anno": 2013,
+    "Licenza": "Non indicata in Crossref",
+    "Precisione": "Comune",
+    "Fonte": "Crossref (metadati); localizzazione manuale (Geologiaintasca)",
+    "Dettagli": "**Luogo:** Lauriano (TO)\n**Anno:** 2013\n**Licenza:** Non indicata in Crossref\n**Posizione:** centroide del comune indicato dal curatore\n[[https://doi.org/10.1080/17445647.2012.757711|Articolo (DOI)]]"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     7.9895,
+     45.1527
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
     "Title": "Multi-temporal Maps of the Montaguto Earth Flow in Southern Italy from 1954 to 2010",
     "DOI": "10.1080/17445647.2013.765812",
     "URL": "https://doi.org/10.1080/17445647.2013.765812",
@@ -1148,6 +1170,28 @@
   {
    "type": "Feature",
    "properties": {
+    "Title": "Superposed syn-metamorphic structures of the Alpine and pre-Alpine convergent cycles in the Southalpine basement of the Orobic Alps (Northern Italy)",
+    "DOI": "10.1080/17445647.2014.987833",
+    "URL": "https://doi.org/10.1080/17445647.2014.987833",
+    "Location": "Aprica (SO)",
+    "Type": "Research Map",
+    "Anno": 2014,
+    "Licenza": "Non indicata in Crossref",
+    "Precisione": "Comune",
+    "Fonte": "Crossref (metadati); localizzazione manuale (Geologiaintasca)",
+    "Dettagli": "**Luogo:** Aprica (SO)\n**Anno:** 2014\n**Licenza:** Non indicata in Crossref\n**Posizione:** centroide del comune indicato dal curatore\n[[https://doi.org/10.1080/17445647.2014.987833|Articolo (DOI)]]"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     10.1466,
+     46.1313
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
     "Title": "Bathymetry of Ischia Island and its offshore (Italy), scale 1:50.000",
     "DOI": "10.1080/17445647.2014.998302",
     "URL": "https://doi.org/10.1080/17445647.2014.998302",
@@ -1296,6 +1340,28 @@
     "coordinates": [
      14.2396,
      40.8567
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "Title": "Geomorphology of the floodplain at the confluence of the Aventino and Sangro rivers (Abruzzo, Central Italy)",
+    "DOI": "10.1080/17445647.2015.1036139",
+    "URL": "https://doi.org/10.1080/17445647.2015.1036139",
+    "Location": "Casoli (CH)",
+    "Type": "Research Map",
+    "Anno": 2015,
+    "Licenza": "Non indicata in Crossref",
+    "Precisione": "Comune",
+    "Fonte": "Crossref (metadati); localizzazione manuale (Geologiaintasca)",
+    "Dettagli": "**Luogo:** Casoli (CH)\n**Anno:** 2015\n**Licenza:** Non indicata in Crossref\n**Posizione:** centroide del comune indicato dal curatore\n[[https://doi.org/10.1080/17445647.2015.1036139|Articolo (DOI)]]"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.2921,
+     42.128
     ]
    }
   },
@@ -1472,6 +1538,28 @@
     "coordinates": [
      8.5316,
      44.4688
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "Title": "Updated landslide inventory of the area between the Furiano and Rosmarino creeks (Sicily, Italy)",
+    "DOI": "10.1080/17445647.2015.1114975",
+    "URL": "https://doi.org/10.1080/17445647.2015.1114975",
+    "Location": "San Fratello (ME)",
+    "Type": "Research Map",
+    "Anno": 2015,
+    "Licenza": "Non indicata in Crossref",
+    "Precisione": "Comune",
+    "Fonte": "Crossref (metadati); localizzazione manuale (Geologiaintasca)",
+    "Dettagli": "**Luogo:** San Fratello (ME)\n**Anno:** 2015\n**Licenza:** Non indicata in Crossref\n**Posizione:** centroide del comune indicato dal curatore\n[[https://doi.org/10.1080/17445647.2015.1114975|Articolo (DOI)]]"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.6119,
+     37.9755
     ]
    }
   },
@@ -2028,6 +2116,28 @@
   {
    "type": "Feature",
    "properties": {
+    "Title": "Tectono-stratigraphic architecture of the Ionian piedmont between the Arso Stream and Nicà River catchments (Calabria, Southern Italy)",
+    "DOI": "10.1080/17445647.2017.1299642",
+    "URL": "https://doi.org/10.1080/17445647.2017.1299642",
+    "Location": "Cariati (CS)",
+    "Type": "Research Map",
+    "Anno": 2017,
+    "Licenza": "CC BY 4.0",
+    "Precisione": "Comune",
+    "Fonte": "Crossref (metadati); localizzazione manuale (Geologiaintasca)",
+    "Dettagli": "**Luogo:** Cariati (CS)\n**Anno:** 2017\n**Licenza:** CC BY 4.0\n**Posizione:** centroide del comune indicato dal curatore\n[[https://doi.org/10.1080/17445647.2017.1299642|Articolo (DOI)]]"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     16.9519,
+     39.4879
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
     "Title": "Late Holocene landscape evolution of the Gulf of Naples (Italy) inferred from geoarchaeological data",
     "DOI": "10.1080/17445647.2017.1300611",
     "URL": "https://doi.org/10.1080/17445647.2017.1300611",
@@ -2110,6 +2220,28 @@
     "coordinates": [
      13.2213,
      42.3603
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "Title": "Geology and mass movements of the Licetto River catchment (Calabrian Coastal Range, Southern Italy)",
+    "DOI": "10.1080/17445647.2017.1342283",
+    "URL": "https://doi.org/10.1080/17445647.2017.1342283",
+    "Location": "Lago (CS)",
+    "Type": "Research Map",
+    "Anno": 2017,
+    "Licenza": "CC BY 4.0",
+    "Precisione": "Comune",
+    "Fonte": "Crossref (metadati); localizzazione manuale (Geologiaintasca)",
+    "Dettagli": "**Luogo:** Lago (CS)\n**Anno:** 2017\n**Licenza:** CC BY 4.0\n**Posizione:** centroide del comune indicato dal curatore\n[[https://doi.org/10.1080/17445647.2017.1342283|Articolo (DOI)]]"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     16.1553,
+     39.1661
     ]
    }
   },
@@ -3106,6 +3238,28 @@
   {
    "type": "Feature",
    "properties": {
+    "Title": "Geomorphological analysis of drainage changes in the NE Apennines piedmont area: the case of the middle Tavo River bend (Abruzzo, Central Italy)",
+    "DOI": "10.1080/17445647.2020.1726833",
+    "URL": "https://doi.org/10.1080/17445647.2020.1726833",
+    "Location": "Loreto Aprutino (PE)",
+    "Type": "Research Map",
+    "Anno": 2020,
+    "Licenza": "CC BY 4.0",
+    "Precisione": "Comune",
+    "Fonte": "Crossref (metadati); localizzazione manuale (Geologiaintasca)",
+    "Dettagli": "**Luogo:** Loreto Aprutino (PE)\n**Anno:** 2020\n**Licenza:** CC BY 4.0\n**Posizione:** centroide del comune indicato dal curatore\n[[https://doi.org/10.1080/17445647.2020.1726833|Articolo (DOI)]]"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.9745,
+     42.4116
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
     "Title": "Papia civitas gloriosa: urban geomorphology for a thematic itinerary on geocultural heritage in Pavia (Central Po Plain, N Italy)",
     "DOI": "10.1080/17445647.2020.1736198",
     "URL": "https://doi.org/10.1080/17445647.2020.1736198",
@@ -3386,6 +3540,28 @@
     "coordinates": [
      7.0479,
      44.5021
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "Title": "Geology of the Montigiu Nieddu metamorphic basement, NE Sardinia (Italy)",
+    "DOI": "10.1080/17445647.2020.1785344",
+    "URL": "https://doi.org/10.1080/17445647.2020.1785344",
+    "Location": "Golfo Aranci (OT)",
+    "Type": "Research Map",
+    "Anno": 2020,
+    "Licenza": "CC BY 4.0",
+    "Precisione": "Comune",
+    "Fonte": "Crossref (metadati); localizzazione manuale (Geologiaintasca)",
+    "Dettagli": "**Luogo:** Golfo Aranci (OT)\n**Anno:** 2020\n**Licenza:** CC BY 4.0\n**Posizione:** centroide del comune indicato dal curatore\n[[https://doi.org/10.1080/17445647.2020.1785344|Articolo (DOI)]]"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.5735,
+     40.9878
     ]
    }
   },
@@ -3810,6 +3986,28 @@
   {
    "type": "Feature",
    "properties": {
+    "Title": "From traditional to modern ‘full coverage’ geomorphological mapping: a study case in the Chienti river basin (Marche region, central Italy)",
+    "DOI": "10.1080/17445647.2021.1904020",
+    "URL": "https://doi.org/10.1080/17445647.2021.1904020",
+    "Location": "Tolentino (MC)",
+    "Type": "Research Map",
+    "Anno": 2021,
+    "Licenza": "CC BY 4.0",
+    "Precisione": "Comune",
+    "Fonte": "Crossref (metadati); localizzazione manuale (Geologiaintasca)",
+    "Dettagli": "**Luogo:** Tolentino (MC)\n**Anno:** 2021\n**Licenza:** CC BY 4.0\n**Posizione:** centroide del comune indicato dal curatore\n[[https://doi.org/10.1080/17445647.2021.1904020|Articolo (DOI)]]"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.3128,
+     43.2081
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
     "Title": "Geo-historical study for landslide hazard assessment in territory management: the Casaleto-Illica landslide in the Ceno Valley (Northern Apennines, Italy)",
     "DOI": "10.1080/17445647.2021.1908186",
     "URL": "https://doi.org/10.1080/17445647.2021.1908186",
@@ -4030,6 +4228,28 @@
   {
    "type": "Feature",
    "properties": {
+    "Title": "Geology of the contact area between the Internal and External Nappe Zone of the Sardinian Variscan Belt (Italy): new insights on the complex polyphase deformation occurring in the hinterland-foreland transition zone of collisional belts",
+    "DOI": "10.1080/17445647.2022.2093660",
+    "URL": "https://doi.org/10.1080/17445647.2022.2093660",
+    "Location": "Arzana (OG)",
+    "Type": "Research Map",
+    "Anno": 2022,
+    "Licenza": "CC BY 4.0",
+    "Precisione": "Comune",
+    "Fonte": "Crossref (metadati); localizzazione manuale (Geologiaintasca)",
+    "Dettagli": "**Luogo:** Arzana (OG)\n**Anno:** 2022\n**Licenza:** CC BY 4.0\n**Posizione:** centroide del comune indicato dal curatore\n[[https://doi.org/10.1080/17445647.2022.2093660|Articolo (DOI)]]"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.4165,
+     39.9357
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
     "Title": "Geomorphology of the Liera catchment (Dolomites, NE Italy): understanding landscape response to an extreme event",
     "DOI": "10.1080/17445647.2023.2165979",
     "URL": "https://doi.org/10.1080/17445647.2023.2165979",
@@ -4140,6 +4360,28 @@
   {
    "type": "Feature",
    "properties": {
+    "Title": "The paleolandscape evolution of the southwestern coast of Sardinia (Italy) and its impact on Mesolithic settlements",
+    "DOI": "10.1080/17445647.2023.2182722",
+    "URL": "https://doi.org/10.1080/17445647.2023.2182722",
+    "Location": "Arbus (VS)",
+    "Type": "Research Map",
+    "Anno": 2023,
+    "Licenza": "CC BY 4.0",
+    "Precisione": "Comune",
+    "Fonte": "Crossref (metadati); localizzazione manuale (Geologiaintasca)",
+    "Dettagli": "**Luogo:** Arbus (VS)\n**Anno:** 2023\n**Licenza:** CC BY 4.0\n**Posizione:** centroide del comune indicato dal curatore\n[[https://doi.org/10.1080/17445647.2023.2182722|Articolo (DOI)]]"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     8.4986,
+     39.5742
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
     "Title": "Reconstructing anthropic coastal landscape of Campi Flegrei volcanic area (Southern Italy) during the Roman period from multi-technique surveys",
     "DOI": "10.1080/17445647.2023.2187320",
     "URL": "https://doi.org/10.1080/17445647.2023.2187320",
@@ -4178,6 +4420,28 @@
     "coordinates": [
      13.0438,
      42.9297
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "Title": "Tectonic coupling of oceanic and continental units in the Southwestern Alps (Western Liguria, Italy) revealed by structural mapping",
+    "DOI": "10.1080/17445647.2023.2214789",
+    "URL": "https://doi.org/10.1080/17445647.2023.2214789",
+    "Location": "Briga Alta (CN)",
+    "Type": "Research Map",
+    "Anno": 2023,
+    "Licenza": "CC BY 4.0",
+    "Precisione": "Comune",
+    "Fonte": "Crossref (metadati); localizzazione manuale (Geologiaintasca)",
+    "Dettagli": "**Luogo:** Briga Alta (CN)\n**Anno:** 2023\n**Licenza:** CC BY 4.0\n**Posizione:** centroide del comune indicato dal curatore\n[[https://doi.org/10.1080/17445647.2023.2214789|Articolo (DOI)]]"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     7.7113,
+     44.1327
     ]
    }
   },
