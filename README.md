@@ -14,8 +14,8 @@ I dati sono file GeoJSON nella cartella `dati/`, letti dalla mappa web (`index.h
 |---|---|---|---|
 | Progetto CARG 1:50.000 | `dati/carg/carg_50k_fogli.geojson` | 634 fogli | CARG-GATE (ISPRA) |
 | Carta Geologica d'Italia 1:100.000 | `dati/carta_100k/carta_100k_fogli.geojson` | 278 fogli | Quadro d'unione e catalogo Biblioteca ISPRA |
-| Journal of Maps | `dati/journal_of_maps/jom_italia.geojson` | 191 pubblicazioni | Crossref + confini ISTAT |
-| JoM – studi a scala regionale | `dati/journal_of_maps/jom_regionali.geojson` | 122 pubblicazioni | Crossref + confini ISTAT |
+| Journal of Maps | `dati/journal_of_maps/jom_italia.geojson` | 248 pubblicazioni | Crossref + confini ISTAT |
+| JoM – studi a scala regionale | `dati/journal_of_maps/jom_regionali.geojson` | 71 pubblicazioni | Crossref + confini ISTAT |
 | Altre riviste | `dati/altre_riviste/altre_riviste.geojson` | 4 pubblicazioni | Selezione manuale + confini ISTAT |
 | Geoportali regionali | `dati/geoportali_regionali/geoportali_regionali.geojson` | 21 enti | Selezione manuale + confini ISTAT |
 

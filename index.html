@@ -178,7 +178,7 @@
   const livelli = [
     { nome: 'Journal of Maps', file: 'dati/journal_of_maps/jom_italia.geojson', colore: COLORE_JOM, punti: true,
       opzioni: { pointToLayer: (f, ll) => L.circleMarker(ll, {
-        radius: 7, color: '#fff', weight: 1, bubblingMouseEvents: false, fillColor: COLORE_JOM, fillOpacity: 0.9 }) } },
+        radius: 7, pane: 'punti', color: '#fff', weight: 1, bubblingMouseEvents: false, fillColor: COLORE_JOM, fillOpacity: 0.9 }) } },
     { nome: 'Progetto CARG 1:50.000', file: 'dati/carg/carg_50k_fogli.geojson', colore: '#FF0000', parametro: 'carg',
       opzioni: { interactive: false, style: f => ({ color: '#555', weight: 0.6,
         fillOpacity: COLORI_CARG[f.properties.Stato] ? 0.45 : 0, fillColor: COLORI_CARG[f.properties.Stato] || '#ffffff' }) } },
@@ -194,13 +194,15 @@
     // quando un post di Geologiaintasca ne parla: dati/altre_riviste/localizzazioni.csv
     { nome: 'Altre riviste', file: 'dati/altre_riviste/altre_riviste.geojson', colore: COLORE_ALTRE, punti: true,
       opzioni: { pointToLayer: (f, ll) => L.circleMarker(ll, {
-        radius: 7, color: '#fff', weight: 1, bubblingMouseEvents: false, fillColor: COLORE_ALTRE, fillOpacity: 0.9 }) } }
+        radius: 7, pane: 'punti', color: '#fff', weight: 1, bubblingMouseEvents: false, fillColor: COLORE_ALTRE, fillOpacity: 0.9 }) } }
   ];
   // Livelli di articoli (ricerca, ?doi=): Journal of Maps, JoM regionale, Altre riviste
   const livelliJom = () => [livelli[0], livelli[4], livelli[5]];
 
   // ---------- Geologia ISPRA (servizi WMS, interrogabili al clic) ----------
   map.createPane('geologia'); map.getPane('geologia').style.zIndex = 350;  // sotto i fogli e i punti
+  // Punti degli articoli sempre sopra fogli e poligoni (altrimenti l'ordine dipende da quale file arriva prima)
+  map.createPane('punti'); map.getPane('punti').style.zIndex = 450;
   const SINA = 'https://sinacloud.isprambiente.it/arcgisgeo/';
   const geologia = [
     // WMS, dal basso: unità geologiche, depositi quaternari, limiti geologici, elementi tettonici,
