@@ -22,7 +22,7 @@ I dati sono file GeoJSON nella cartella `dati/`, letti dalla mappa web (`index.h
 Campi comuni a tutti i livelli: `Title`, `URL`, `Location`, `Type`. Il campo `Dettagli` contiene il testo dei popup della mappa web, generato da `scripts/dettagli_popup.py`.
 
 ### 1. Cartografia ufficiale (Progetto CARG)
-Fogli della Carta Geologica d'Italia alla scala 1:50.000, con lo stato di realizzazione indicato su **[CARG-GATE](https://progetto-carg.isprambiente.it/cartografiaCARG/index.php?source=cartageologica)** (ISPRA). **Si aggiorna da solo ogni lunedì.**
+Fogli della Carta Geologica d'Italia alla scala 1:50.000, con lo stato di realizzazione indicato su **[CARG-GATE](https://progetto-carg.isprambiente.it/cartografiaCARG/index.php?source=cartageologica)** (ISPRA). **Si aggiorna da solo il 1° di ogni mese.**
 * **Stato:** copiato testualmente da CARG-GATE: *Stampato*, *In attesa di stampa*, *In allestimento per la stampa*, *Rilevamento in corso*. Se il portale non indica uno stato, il campo resta vuoto: nessuno stato viene dedotto.
 * **Colori:** gli stessi della legenda di CARG-GATE.
 * **Link:** la scheda del foglio sul portale, il DOI della carta e il DOI delle note illustrative (archivio Open Access di ISPRA, quando disponibili).
@@ -36,7 +36,7 @@ Fogli della Carta Geologica d'Italia alla scala 1:100.000, con le edizioni prese
 * **Edizioni:** dal catalogo della Biblioteca ISPRA, che ha messo online l'intera serie (prima e seconda edizione). Per ogni foglio sono elencate tutte le edizioni trovate, con anno, eventuale titolo diverso (es. il 141 Pescara nella 1ª edizione si chiamava "Chieti") e presenza della copia digitale. Edizione e anno sono copiati dalla scheda; se l'edizione non è indicata, lo si dichiara.
 * **Link:** alla scheda del catalogo dell'edizione più recente con copia digitale e alle note illustrative. Le scansioni non vengono riprodotte, perché il catalogo non ne dichiara la licenza.
 * **Fogli senza schede:** restano sulla mappa con la dicitura "Nessuna scheda trovata nel catalogo ISPRA".
-* **Aggiornamento:** automatico il primo lunedì di ogni mese ([`aggiorna-100k.yml`](.github/workflows/aggiorna-100k.yml)).
+* **Aggiornamento:** automatico il 1° di ogni mese ([`aggiorna-100k.yml`](.github/workflows/aggiorna-100k.yml)).
 
 *Fonte: ISPRA – Servizio Geologico d'Italia (quadro d'unione 1:100.000; catalogo OPAC della Biblioteca ISPRA).*
 
@@ -89,7 +89,7 @@ Nei popup il pulsante «Copia link» prepara questi indirizzi.
 
 ---
 ## Aggiornamento automatico
-Quattro GitHub Action aggiornano i dati: [`aggiorna-carg.yml`](.github/workflows/aggiorna-carg.yml) rigenera ogni lunedì i fogli CARG da CARG-GATE, [`aggiorna-100k.yml`](.github/workflows/aggiorna-100k.yml) la Carta 1:100.000 il primo lunedì del mese, [`aggiorna-jom.yml`](.github/workflows/aggiorna-jom.yml) il livello Journal of Maps, [`aggiorna-altre-riviste.yml`](.github/workflows/aggiorna-altre-riviste.yml) il livello Altre riviste (solo quando cambia il suo CSV). L'Action del Journal of Maps parte:
+Quattro GitHub Action aggiornano i dati: [`aggiorna-carg.yml`](.github/workflows/aggiorna-carg.yml) rigenera il 1° di ogni mese i fogli CARG da CARG-GATE, [`aggiorna-100k.yml`](.github/workflows/aggiorna-100k.yml) la Carta 1:100.000 lo stesso giorno, [`aggiorna-jom.yml`](.github/workflows/aggiorna-jom.yml) il livello Journal of Maps, [`aggiorna-altre-riviste.yml`](.github/workflows/aggiorna-altre-riviste.yml) il livello Altre riviste (solo quando cambia il suo CSV). L'Action del Journal of Maps parte:
 * **ogni lunedì**, scaricando da Crossref i nuovi articoli sull'Italia;
 * **a ogni modifica di `localizzazioni.csv`**, così una localizzazione aggiunta compare sulla mappa in pochi minuti;
 * **a mano**, da *Actions → Aggiorna Journal of Maps → Run workflow*.
@@ -148,7 +148,7 @@ python3 -I scripts/valida_dati.py                      # controllo qualità: va 
 * **Geoportali regionali:** i link sono scelti a mano e possono cambiare senza preavviso; quello dell'Abruzzo è solo in http.
 
 ## Roadmap
-- [x] Fogli CARG da CARG-GATE, con stato ufficiale e aggiornamento settimanale
+- [x] Fogli CARG da CARG-GATE, con stato ufficiale e aggiornamento mensile
 - [x] Carta Geologica d'Italia 1:100.000, con edizioni dal catalogo ISPRA
 - [x] Journal of Maps da Crossref, con DOI verificati, localizzazioni manuali e aggiornamento settimanale
 - [x] Geoportali regionali su confini ISTAT
