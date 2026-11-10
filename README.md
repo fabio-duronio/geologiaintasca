@@ -16,7 +16,7 @@ I dati sono file GeoJSON nella cartella `dati/`, letti dalla mappa web (`index.h
 | Carta Geologica d'Italia 1:100.000 | `dati/carta_100k/carta_100k_fogli.geojson` | 278 fogli | Quadro d'unione e catalogo Biblioteca ISPRA |
 | Journal of Maps | `dati/journal_of_maps/jom_italia.geojson` | 248 pubblicazioni | Crossref + confini ISTAT |
 | JoM – studi a scala regionale | `dati/journal_of_maps/jom_regionali.geojson` | 71 pubblicazioni | Crossref + confini ISTAT |
-| Altre riviste | `dati/altre_riviste/altre_riviste.geojson` | 4 pubblicazioni | Selezione manuale + confini ISTAT |
+| Altre riviste | `dati/altre_riviste/altre_riviste.geojson` | 5 pubblicazioni | Selezione manuale + confini ISTAT |
 | Geoportali regionali | `dati/geoportali_regionali/geoportali_regionali.geojson` | 21 enti | Selezione manuale + confini ISTAT |
 
 Campi comuni a tutti i livelli: `Title`, `URL`, `Location`, `Type`. Il campo `Dettagli` contiene il testo dei popup della mappa web, generato da `scripts/dettagli_popup.py`.
@@ -54,7 +54,7 @@ Articoli del *Journal of Maps* su aree italiane, in due livelli. Il punto indica
 *Fonte: metadati [Crossref](https://www.crossref.org/) (ISSN 1744-5647); confini ISTAT per la localizzazione.*
 
 ### 3b. Altre riviste (selezione manuale)
-Carte geologiche allegate ad articoli di riviste diverse dal *Journal of Maps* (es. *Geological Field Trips and Maps*), aggiunte **solo quando un post di Geologiaintasca riguarda una carta allegata**. Nessuna ricerca automatica: queste riviste pubblicano poche carte e molti contributi senza carta, quindi un indice automatico richiederebbe comunque un filtro a mano.
+Carte geologiche allegate ad articoli di riviste diverse dal *Journal of Maps* (es. *Geological Field Trips and Maps*), aggiunte **solo quando un post di Geologiaintasca riguarda una carta allegata**. Nessuna ricerca automatica: in queste riviste la carta allegata è l'eccezione, spesso nel materiale supplementare, e va verificata articolo per articolo.
 * **Criteri:** territorio italiano, carta allegata all'articolo (tavola o materiale supplementare), Open Access con licenza aperta dichiarata sulla pagina dell'articolo.
 * **Posizione:** come per il Journal of Maps, `Precisione` `Comune` (centroide del comune ISTAT indicato dal curatore) o `Coordinate` (solo se scritte nel testo). Nessuna coordinata stimata.
 * **Metadati:** titolo, anno e licenza copiati dalla pagina dell'articolo, perché non tutte le riviste li depositano completi su Crossref.
@@ -114,8 +114,6 @@ Gli articoli da non mettere sulla mappa (commenti, temi non cartografici, carte 
 
 Un DOI può comparire in un solo file tra `localizzazioni.csv`, `regionali.csv` ed `esclusioni.csv`: un doppione fa fallire l'Action.
 
-Per ogni post di Geologiaintasca su un articolo del Journal of Maps viene preparata la riga da aggiungere.
-
 ### Aggiungere un articolo di un'altra rivista
 Il file [`dati/altre_riviste/localizzazioni.csv`](dati/altre_riviste/localizzazioni.csv) (separatore `;`) alimenta il livello *Altre riviste*. A ogni modifica l'Action [`aggiorna-altre-riviste.yml`](.github/workflows/aggiorna-altre-riviste.yml) rigenera il livello in pochi minuti.
 
@@ -151,9 +149,10 @@ python3 -I scripts/valida_dati.py                      # controllo qualità: va 
 - [x] Fogli CARG da CARG-GATE, con stato ufficiale e aggiornamento mensile
 - [x] Carta Geologica d'Italia 1:100.000, con edizioni dal catalogo ISPRA
 - [x] Journal of Maps da Crossref, con DOI verificati, localizzazioni manuali e aggiornamento settimanale
+- [x] Journal of Maps: tutti gli articoli posizionati su un comune o, se a scala regionale, nel livello dedicato
+- [x] Altre riviste: carte allegate ad articoli Open Access, a selezione manuale
 - [x] Geoportali regionali su confini ISTAT
 - [x] Geologia CARG 1:25.000 e 1:100.000 come livelli WMS ISPRA nella mappa web
-- [ ] Localizzare gli articoli `Da localizzare` del livello regionale e quelli rimasti in `jom_da_localizzare.csv` (servono gli abstract o i paper)
 - [ ] Verificare i link dei geoportali regionali
 - [ ] Cartografia geologica marina (CARG Mare)
 
