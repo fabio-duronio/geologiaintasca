@@ -1,0 +1,14 @@
+{
+  "title": "Geologiaintasca – Cartografia geologica italiana",
+  "upload_type": "dataset",
+  "description": "<p>Indice geografico delle risorse cartografiche geologiche italiane, consultabile come mappa web: fogli del Progetto CARG 1:50.000 con lo stato riportato da CARG-GATE (ISPRA), Carta Geologica d'Italia 1:100.000, articoli del Journal of Maps sul territorio italiano posizionati sul comune dell'area di studio, carte geologiche allegate ad articoli di altre riviste Open Access, geoportali regionali.</p><p>Mappa: <a href=\"https://fabio-duronio.github.io/geologiaintasca/\">fabio-duronio.github.io/geologiaintasca</a>. Il codice è distribuito con licenza MIT; i dati derivati mantengono la licenza delle fonti indicate nel README (ISPRA, Crossref, ISTAT, riviste citate).</p>",
+  "creators": [
+    { "name": "Duronio, Fabio" }
+  ],
+  "license": "MIT",
+  "language": "ita",
+  "keywords": ["geologia", "cartografia geologica", "Italia", "CARG", "ISPRA", "Journal of Maps", "GeoJSON", "Leaflet"],
+  "related_identifiers": [
+    { "identifier": "https://fabio-duronio.github.io/geologiaintasca/", "relation": "isDocumentedBy", "resource_type": "other" }
+  ]
+}

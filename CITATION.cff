@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "Se usi questa mappa o i suoi dati, citala così."
+title: "Geologiaintasca – Cartografia geologica italiana"
+type: dataset
+authors:
+  - family-names: Duronio
+    given-names: Fabio
+license: MIT
+url: "https://fabio-duronio.github.io/geologiaintasca/"
+repository-code: "https://github.com/fabio-duronio/geologiaintasca"
+keywords:
+  - geologia
+  - cartografia geologica
+  - Italia
+  - CARG
+  - Journal of Maps
