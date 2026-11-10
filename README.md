@@ -153,8 +153,6 @@ python3 -I scripts/valida_dati.py                      # controllo qualità: va 
 - [x] Altre riviste: carte allegate ad articoli Open Access, a selezione manuale
 - [x] Geoportali regionali su confini ISTAT
 - [x] Geologia CARG 1:25.000 e 1:100.000 come livelli WMS ISPRA nella mappa web
-- [ ] Verificare i link dei geoportali regionali
-- [ ] Cartografia geologica marina (CARG Mare)
 
 ## Licenze e disclaimer
 Il repository è un **indice di collegamenti** a risorse esterne.
