@@ -92,6 +92,29 @@
      43.0394
     ]
    }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "Title": "Geological Map of the Frasassi Gorge (Northern Apennines, Italy)",
+    "DOI": "10.3390/geosciences15120454",
+    "URL": "https://doi.org/10.3390/geosciences15120454",
+    "Location": "Genga (AN)",
+    "Type": "Research Map",
+    "Rivista": "Geosciences",
+    "Anno": 2025,
+    "Licenza": "CC BY 4.0",
+    "Precisione": "Comune",
+    "Fonte": "Pagina dell'articolo (metadati); localizzazione manuale (Geologiaintasca)",
+    "Dettagli": "**Rivista:** Geosciences\n**Luogo:** Genga (AN)\n**Anno:** 2025\n**Licenza:** CC BY 4.0\n**Posizione:** centroide del comune indicato dal curatore\n[[https://doi.org/10.3390/geosciences15120454|Articolo (DOI)]]"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     12.9367,
+     43.4263
+    ]
+   }
   }
  ]
 }
