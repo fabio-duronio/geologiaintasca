@@ -1126,6 +1126,28 @@
   {
    "type": "Feature",
    "properties": {
+    "Title": "Geology of the Brenner Pass-Fortezza transect, Italian Eastern Alps",
+    "DOI": "10.1080/17445647.2014.980337",
+    "URL": "https://doi.org/10.1080/17445647.2014.980337",
+    "Location": "Fortezza/Franzensfeste (BZ)",
+    "Type": "Research Map",
+    "Anno": 2014,
+    "Licenza": "Non indicata in Crossref",
+    "Precisione": "Comune",
+    "Fonte": "Crossref (metadati); localizzazione manuale (Geologiaintasca)",
+    "Dettagli": "**Luogo:** Fortezza/Franzensfeste (BZ)\n**Anno:** 2014\n**Licenza:** Non indicata in Crossref\n**Posizione:** centroide del comune indicato dal curatore\n[[https://doi.org/10.1080/17445647.2014.980337|Articolo (DOI)]]"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     11.5587,
+     46.7991
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
     "Title": "Geology and sedimentary facies of the Pliocene succession of the Baronia Mountains (Ariano Basin, southern Italy)",
     "DOI": "10.1080/17445647.2014.980338",
     "URL": "https://doi.org/10.1080/17445647.2014.980338",
