@@ -1,10 +1,10 @@
 # Aggiorna il livello della Carta Geologica d'Italia 1:100.000 (quadro d'unione + catalogo Biblioteca ISPRA).
-# Serie storica: basta un controllo al mese (primo lunedì), più avvio a mano e quando cambia lo script.
+# Serie storica: basta un controllo al mese (il 1°), più avvio a mano e quando cambia lo script.
 name: Aggiorna Carta 1:100.000
 
 on:
   schedule:
-    - cron: "47 5 1-7 * 1"   # primo lunedì del mese, 05:47 UTC
+    - cron: "47 5 1 * *"   # il 1° del mese, 05:47 UTC
   push:
     branches: [main]
     paths:

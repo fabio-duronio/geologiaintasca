@@ -1,13 +1,13 @@
 # Aggiorna il livello dei fogli CARG 1:50.000 da CARG-GATE (ISPRA).
-# Parte ogni lunedì, a mano (Actions → Aggiorna fogli CARG → Run workflow) e quando cambiano gli script.
+# Parte il 1° di ogni mese (i fogli stampati sono pochi l'anno), a mano (Actions → Aggiorna fogli CARG → Run workflow) e quando cambiano gli script.
 # Se i dati non cambiano non fa commit; se il validatore trova errori si ferma senza toccare nulla.
 name: Aggiorna fogli CARG
 
 on:
   schedule:
-    - cron: "37 5 * * 1"   # lunedì 05:37 UTC
+    - cron: "37 5 1 * *"   # il 1° del mese, 05:37 UTC
   push:
-    branches: [main, carg-carggate]
+    branches: [main]
     paths:
       - "scripts/build_carg.py"
       - "scripts/scarica_carggate.py"
