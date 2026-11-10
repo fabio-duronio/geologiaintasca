@@ -159,7 +159,8 @@ python3 -I scripts/valida_dati.py                      # controllo qualità: va 
 ## Licenze e disclaimer
 Il repository è un **indice di collegamenti** a risorse esterne.
 
-* **Codice:** licenza [MIT](LICENSE).
+* **Codice** (mappa web e script): licenza [MIT](LICENSE).
+* **Dati curati** (cartella `dati/`: localizzazioni, aree regionali, esclusioni, selezioni, GeoJSON compilati): licenza [CC BY 4.0](dati/LICENSE.md), con l'indicazione di come citarli. Le licenze delle fonti a monte, elencate qui sotto, restano valide.
 * **Fogli CARG:** © ISPRA – Servizio Geologico d'Italia, dati di CARG-GATE con licenza **CC BY 4.0** dichiarata dal portale.
 * **Carta 1:100.000:** © ISPRA – Servizio Geologico d'Italia. Sono indicizzati quadro d'unione e schede del catalogo; le scansioni restano sul sito ISPRA.
 * **Geologia 1:25.000 e 1:100.000:** © ISPRA – Servizio Geologico d'Italia, servizi di visualizzazione WMS; immagini e informazioni al clic sono fornite direttamente da ISPRA.
