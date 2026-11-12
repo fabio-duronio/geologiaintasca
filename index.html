@@ -17,8 +17,10 @@
   <meta property="og:image:height" content="640">
   <meta property="og:image:alt" content="Mappa d'Italia con i fogli geologici CARG e 1:100.000 e i punti degli articoli del Journal of Maps">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <style>
     html, body { margin: 0; height: 100%; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; color: #222; }
     #map { height: 100%; }
@@ -61,7 +63,7 @@
     .opacita input { flex: 1; min-width: 70px; margin: 0; }
     .opacita output { width: 32px; text-align: right; }
     .opacita[hidden] { display: none; }
-    .ricerca { padding: 6px 8px; width: 260px; }
+    .ricerca { padding: 6px 8px; width: 300px; }
     .ricerca form { display: flex; gap: 4px; }
     .ricerca input { flex: 1; min-width: 0; font: inherit; padding: 3px 6px; border: 1px solid #bbb; border-radius: 3px; }
     .ricerca button { font: inherit; padding: 3px 8px; border: 1px solid #bbb; border-radius: 3px; background: #f5f5f5; cursor: pointer; }
@@ -71,7 +73,6 @@
     .ricerca li.gruppo, .ricerca li.meta { cursor: default; color: #666; }
     .ricerca li.gruppo { font-size: 10px; text-transform: uppercase; letter-spacing: .03em; padding-top: 6px; border-top: 0; }
     .ricerca li.gruppo:hover, .ricerca li.meta:hover { text-decoration: none; }
-    .ricerca { width: 300px; }
     .scala-num { padding: 2px 6px; margin-bottom: 2px !important; }
     @media (max-width: 600px) { .testata { max-width: 220px; } .ricerca { width: 200px; }
       /* su telefono l'attribuzione occupa tutta la larghezza in basso: la legenda sale sopra di lei */
@@ -160,6 +161,10 @@
     .replace(/\*\*(.+?)\*\*/g, '<b>$1</b>')
     .replace(/\[\[(https?:\/\/[^|\]]+)\|([^\]]+)\]\]/g, (m, u, txt) => `<a href="${u}" target="_blank" rel="noopener">${txt}</a>`)
     .replace(/\n/g, '<br>');
+  const numeroFoglio = t => String(t || '').trim().toLowerCase().replace(/^0+(?=\d)/, '');
+  const perAnno = fs => fs.sort((a, b) => (b.properties.Anno || 0) - (a.properties.Anno || 0));
+  const popupArticolo = f => `<b>${esc(f.properties.Title)}</b><br>${daDettagli(f.properties.Dettagli)}` +
+    (f.properties.DOI ? `<div class="azioni">${pulsanteLink(linkArticolo(f), "Copia link all'articolo")}</div>` : '');
   const sezione = (titolo, corpo) => `<div class="sezione"><h3>${esc(titolo)}</h3>${corpo}</div>`;
   const maiuscola = s => { s = String(s || '').trim().toLowerCase(); return s ? s[0].toUpperCase() + s.slice(1) : ''; };
   // 'L'AQUILA' -> 'L'Aquila', 'S. GIOVANNI IN FIORE' -> 'S. Giovanni in Fiore'
@@ -176,10 +181,18 @@
       } return c; };
     return dentro(anelli[0]) && !anelli.slice(1).some(dentro);
   }
+  // Riquadro di ingombro calcolato una volta sola per foglio: scarta subito i poligoni lontani dal clic
   function contiene(f, lng, lat) {
     const g = f.geometry; if (!g) return false;
-    const pol = g.type === 'MultiPolygon' ? g.coordinates : g.type === 'Polygon' ? [g.coordinates] : [];
-    return pol.some(p => nelPoligono(lng, lat, p));
+    if (!f._pol) {
+      f._pol = g.type === 'MultiPolygon' ? g.coordinates : g.type === 'Polygon' ? [g.coordinates] : [];
+      f._bbox = [Infinity, Infinity, -Infinity, -Infinity];
+      f._pol.forEach(p => p[0].forEach(([x, y]) => { const b = f._bbox;
+        if (x < b[0]) b[0] = x; if (y < b[1]) b[1] = y; if (x > b[2]) b[2] = x; if (y > b[3]) b[3] = y; }));
+    }
+    const b = f._bbox;
+    if (lng < b[0] || lng > b[2] || lat < b[1] || lat > b[3]) return false;
+    return f._pol.some(p => nelPoligono(lng, lat, p));
   }
 
   // ---------- Livelli dei dati (GeoJSON del repository) ----------
@@ -187,29 +200,32 @@
                         'In allestimento per la stampa': '#FFAA00', 'Rilevamento in corso': '#A3FF73' };
   const COLORE_JOM = '#1a237e', COLORE_JOM_REG = '#5c6bc0', COLORE_ALTRE = '#8e24aa';
 
-  const livelli = [
-    { nome: 'Journal of Maps', file: 'dati/journal_of_maps/jom_italia.geojson', colore: COLORE_JOM, punti: true,
-      opzioni: { pointToLayer: (f, ll) => L.circleMarker(ll, {
-        radius: 7, pane: 'punti', color: '#fff', weight: 1, bubblingMouseEvents: false, fillColor: COLORE_JOM, fillOpacity: 0.9 }) } },
-    { nome: 'Progetto CARG 1:50.000', file: 'dati/carg/carg_50k_fogli.geojson', colore: '#FF0000', parametro: 'carg',
+  const puntoArticolo = colore => (f, ll) => L.circleMarker(ll, {
+    radius: 7, pane: 'punti', color: '#fff', weight: 1, bubblingMouseEvents: false, fillColor: colore, fillOpacity: 0.9 });
+
+  // Livelli per nome (l'ordine di Object.values è quello di dichiarazione)
+  const LIV = {
+    jom: { nome: 'Journal of Maps', file: 'dati/journal_of_maps/jom_italia.geojson', colore: COLORE_JOM, punti: true,
+      opzioni: { pointToLayer: puntoArticolo(COLORE_JOM) } },
+    carg: { nome: 'Progetto CARG 1:50.000', file: 'dati/carg/carg_50k_fogli.geojson', colore: '#FF0000', parametro: 'carg',
       opzioni: { interactive: false, style: f => ({ color: '#555', weight: 0.6,
         fillOpacity: COLORI_CARG[f.properties.Stato] ? 0.45 : 0, fillColor: COLORI_CARG[f.properties.Stato] || '#ffffff' }) } },
-    { nome: "Carta Geologica d'Italia 1:100.000", file: 'dati/carta_100k/carta_100k_fogli.geojson', colore: '#6d4c41', visibile: false, parametro: 'carta100k',
+    c100k: { nome: "Carta Geologica d'Italia 1:100.000", file: 'dati/carta_100k/carta_100k_fogli.geojson', colore: '#6d4c41', visibile: false, parametro: 'carta100k',
       opzioni: { interactive: false, style: f => ({ color: '#6d4c41', weight: 1.2, dashArray: '6 3',
         fillColor: '#6d4c41', fillOpacity: f.properties.Copia_digitale === 'Sì' ? 0.12 : 0.03 }) } },
-    { nome: 'Geoportali regionali', file: 'dati/geoportali_regionali/geoportali_regionali.geojson', colore: '#2e8b57', visibile: false,
+    geoportali: { nome: 'Geoportali regionali', file: 'dati/geoportali_regionali/geoportali_regionali.geojson', colore: '#2e8b57', visibile: false,
       opzioni: { interactive: false, style: { color: '#2e8b57', weight: 2, fillOpacity: 0.03 } } },
     // Studi su un'intera regione o provincia (area vasta) e articoli con la sola regione nel titolo, ancora da localizzare
-    { nome: 'JoM – studi a scala regionale', file: 'dati/journal_of_maps/jom_regionali.geojson', colore: COLORE_JOM_REG,
+    jomReg: { nome: 'JoM – studi a scala regionale', file: 'dati/journal_of_maps/jom_regionali.geojson', colore: COLORE_JOM_REG,
       punti: true, regionale: true, visibile: false, opzioni: {} },
     // Carte allegate ad articoli di altre riviste (es. Geological Field Trips and Maps), aggiunte a mano
     // quando un post di Geologiaintasca ne parla: dati/altre_riviste/localizzazioni.csv
-    { nome: 'Altre riviste', file: 'dati/altre_riviste/altre_riviste.geojson', colore: COLORE_ALTRE, punti: true,
-      opzioni: { pointToLayer: (f, ll) => L.circleMarker(ll, {
-        radius: 7, pane: 'punti', color: '#fff', weight: 1, bubblingMouseEvents: false, fillColor: COLORE_ALTRE, fillOpacity: 0.9 }) } }
-  ];
-  // Livelli di articoli (ricerca, ?doi=): Journal of Maps, JoM regionale, Altre riviste
-  const livelliJom = () => [livelli[0], livelli[4], livelli[5]];
+    altre: { nome: 'Altre riviste', file: 'dati/altre_riviste/altre_riviste.geojson', colore: COLORE_ALTRE, punti: true,
+      opzioni: { pointToLayer: puntoArticolo(COLORE_ALTRE) } }
+  };
+  const livelli = Object.values(LIV);
+  // Livelli di articoli (ricerca, ?doi=) e di fogli (?carg=, ?carta100k=)
+  const LIVELLI_ARTICOLI = [LIV.jom, LIV.jomReg, LIV.altre], LIVELLI_FOGLI = [LIV.carg, LIV.c100k];
 
   // ---------- Geologia ISPRA (servizi WMS, interrogabili al clic) ----------
   map.createPane('geologia'); map.getPane('geologia').style.zIndex = 350;  // sotto i fogli e i punti
@@ -239,6 +255,7 @@
         a.ETA_FORMAZIONE && `<span class="meta">Età:</span> ${esc(maiuscola(a.ETA_FORMAZIONE))}`
       ]; } }
   ];
+  const [geo25k, geo100k] = geologia;
   geologia.forEach(g => {
     g.layer = L.tileLayer.wms(SINA + 'services/' + g.servizio + '/MapServer/WMSServer', {
       layers: g.wms, format: 'image/png', transparent: true, version: '1.3.0', opacity: 0.75,
@@ -292,13 +309,12 @@
         const f = fs[0], ll = L.GeoJSON.coordsToLatLng(f.geometry.coordinates);
         const m = l.opzioni.pointToLayer(f, ll);
         m.feature = f;
-        m.bindPopup(`<b>${esc(f.properties.Title)}</b><br>${daDettagli(f.properties.Dettagli)}` +
-          (f.properties.DOI ? `<div class="azioni">${pulsanteLink(linkArticolo(f), "Copia link all'articolo")}</div>` : ''));
+        m.bindPopup(popupArticolo(f));
         f._simbolo = m;
         gruppo.addLayer(m);
         return;
       }
-      fs.sort((a, b) => (b.properties.Anno || 0) - (a.properties.Anno || 0));
+      perAnno(fs);
       const p0 = fs[0].properties;
       const lato = fs.length < 10 ? 20 : 24;
       const m = L.marker(L.GeoJSON.coordsToLatLng(fs[0].geometry.coordinates), {
@@ -326,7 +342,7 @@
     }).join('') + '</ol>';
   }
   function aggiungiTarga(gruppo, fs) {
-    fs.sort((a, b) => (b.properties.Anno || 0) - (a.properties.Anno || 0));
+    perAnno(fs);
     // Nome della targhetta: il luogo più frequente nel gruppo (di solito la regione)
     const conta = new Map();
     fs.forEach(f => conta.set(f.properties.Location, (conta.get(f.properties.Location) || 0) + 1));
@@ -336,9 +352,7 @@
         html: `<div class="targa-jom">${esc(nome)}${fs.length > 1 ? `<b>${fs.length}</b>` : ''}</div>` }),
       title: fs.length > 1 ? `${fs.length} articoli – ${nome}` : `${fs[0].properties.Title}`, keyboard: true });
     if (fs.length === 1) {
-      const f = fs[0];
-      m.bindPopup(`<b>${esc(f.properties.Title)}</b><br>${daDettagli(f.properties.Dettagli)}` +
-        (f.properties.DOI ? `<div class="azioni">${pulsanteLink(linkArticolo(f), "Copia link all'articolo")}</div>` : ''));
+      m.bindPopup(popupArticolo(fs[0]));
     } else {
       m.bindPopup(`<b>${fs.length} articoli – ${esc(nome)}</b>` + elencoJom(fs, true), { maxWidth: 340 });
     }
@@ -369,9 +383,9 @@
   const etichettaGeo = g => `<span style="color:#8d6e63">▦</span> ${g.nome}`;
   function riempiControllo() {
     // Ordine per scala e priorità: 1:100.000, 1:50.000, 1:25.000, geoportali, Journal of Maps, Altre riviste
-    const ordine = [[livelli[2], etichetta], [geologia[1], etichettaGeo], [livelli[1], etichetta],
-                    [geologia[0], etichettaGeo], [livelli[3], etichetta], [livelli[0], etichetta], [livelli[4], etichetta],
-                    [livelli[5], etichetta]];
+    const ordine = [[LIV.c100k, etichetta], [geo100k, etichettaGeo], [LIV.carg, etichetta],
+                    [geo25k, etichettaGeo], [LIV.geoportali, etichetta], [LIV.jom, etichetta], [LIV.jomReg, etichetta],
+                    [LIV.altre, etichetta]];
     ordine.forEach(([x]) => controllo.removeLayer(x.layer));
     ordine.forEach(([x, f]) => controllo.addOverlay(x.layer, f(x)));
   }
@@ -390,15 +404,15 @@
     .then(() => { riempiControllo(); stileCarg(); aggiornaEtichette(); apriDaIndirizzo(); });
 
   function apriDaIndirizzo() {
-    const q = new URLSearchParams(location.search), num = v => String(v || '').trim().toLowerCase().replace(/^0+(?=\d)/, '');
+    const q = new URLSearchParams(location.search);
     let fatto = false;
-    [livelli[1], livelli[2]].forEach(l => {
+    LIVELLI_FOGLI.forEach(l => {
       const v = q.get(l.parametro); if (!v || fatto) return;
-      const f = (l.dati || []).find(x => num(x.properties.Foglio) === num(v)); if (f) { vaiFoglio(l, f); fatto = true; }
+      const f = (l.dati || []).find(x => numeroFoglio(x.properties.Foglio) === numeroFoglio(v)); if (f) { vaiFoglio(l, f); fatto = true; }
     });
     const doi = (q.get('doi') || '').trim().toLowerCase().replace(/^https?:\/\/(dx\.)?doi\.org\//, '');
     if (doi && !fatto) {
-      const f = livelliJom().flatMap(l => l.dati || []).find(x => String(x.properties.DOI || '').toLowerCase() === doi);
+      const f = LIVELLI_ARTICOLI.flatMap(l => l.dati || []).find(x => String(x.properties.DOI || '').toLowerCase() === doi);
       if (f) { vaiArticolo(f); fatto = true; }
     }
     // L'indirizzo torna «pulito»: da qui in poi conta solo la vista (#zoom/lat/lon)
@@ -418,7 +432,7 @@
   const etichetteCarg = L.layerGroup().addTo(map);
   function aggiornaEtichette() {
     etichetteCarg.clearLayers();
-    const l = livelli[1];
+    const l = LIV.carg;
     if (!l.dati || !map.hasLayer(l.layer) || map.getZoom() < 9) return;
     const vista = map.getBounds().pad(0.2);
     l.dati.forEach(f => {
@@ -427,12 +441,12 @@
         icon: L.divIcon({ className: 'etichetta-foglio', iconSize: null, html: `<span>${esc(f.properties.Foglio)}</span>` }) }));
     });
   }
-  map.on('zoomend moveend overlayadd overlayremove', aggiornaEtichette);
+  map.on('moveend overlayadd overlayremove', aggiornaEtichette);  // moveend scatta anche dopo ogni zoom
 
   // Con la geologia accesa i fogli CARG diventano quasi trasparenti, per non coprirne i colori
   function stileCarg() {
     const geo = geologia.some(g => map.hasLayer(g.layer));
-    livelli[1].layer.setStyle(f => ({ fillOpacity: COLORI_CARG[f.properties.Stato] ? (geo ? 0.08 : 0.45) : 0 }));
+    LIV.carg.layer.setStyle(f => ({ fillOpacity: COLORI_CARG[f.properties.Stato] ? (geo ? 0.08 : 0.45) : 0 }));
   }
   map.on('overlayadd overlayremove', stileCarg);
 
@@ -493,7 +507,7 @@
     const n = mPerPx / 0.0254 * 96, p = Math.pow(10, Math.floor(Math.log10(n)) - 1);
     scalaNum.getContainer().textContent = '1:' + (Math.round(n / p) * p).toLocaleString('it-IT');
   }
-  map.on('zoomend moveend', aggiornaScala); aggiornaScala();
+  map.on('moveend', aggiornaScala); aggiornaScala();
 
   // ---------- Ricerca ----------
   // 1) Subito, mentre si scrive, nei dati già caricati: fogli CARG e 1:100.000 (numero o nome),
@@ -503,7 +517,6 @@
   const ricerca = L.control({ position: 'topleft' });
   let ultimaRicerca = 0, segnaposto = null;
   const norm = t => String(t || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[’'`]/g, "'").replace(/\s+/g, ' ').trim();
-  const numeroFoglio = t => String(t || '').toLowerCase().replace(/^0+(?=\d)/, '');
   function segna(ll, testo) {
     if (segnaposto) segnaposto.remove();
     segnaposto = L.circleMarker(ll, { radius: 7, color: '#d32f2f', weight: 2, fillOpacity: 0.2 }).addTo(map);
@@ -526,23 +539,22 @@
         `<div class="azioni">${pulsanteLink(linkFoglio(l, f), 'Copia link al foglio')}</div>`).openOn(map);
   }
   function vaiArticolo(f) {
-    const l = f._livello || livelli[0];
+    const l = f._livello || LIV.jom;
     if (!map.hasLayer(l.layer)) map.addLayer(l.layer);
     const ll = L.GeoJSON.coordsToLatLng(f.geometry.coordinates);
     map.setView(ll, Math.max(map.getZoom(), l.regionale ? 8 : 11));
     if (f._simbolo) f._simbolo.openPopup();
   }
   function cercaNeiDati(q) {
-    const nq = norm(q), num = numeroFoglio(q.trim()), out = [];
+    const nq = norm(q), num = numeroFoglio(q), out = [];
     if (nq.length < 2 && !/^\d+$/.test(nq)) return out;
     const fogli = (l, gruppo) => (l.dati || []).filter(f => {
       const p = f.properties;
       return String(p.Foglio || '').split('-').map(numeroFoglio).includes(num) || (nq.length >= 2 && norm(p.Location).includes(nq));
     }).slice(0, 5).map(f => ({ gruppo, testo: f.properties.Title, vai: () => vaiFoglio(l, f) }));
-    out.push(...fogli(livelli[1], 'Fogli CARG 1:50.000'), ...fogli(livelli[2], "Fogli Carta Geologica d'Italia 1:100.000"));
-    livelliJom().forEach(l => {
-      const jom = nq.length < 3 ? [] : (l.dati || []).filter(f => norm(f.properties.Title).includes(nq) || norm(f.properties.Location).includes(nq))
-        .sort((a, b) => (b.properties.Anno || 0) - (a.properties.Anno || 0)).slice(0, 8);
+    out.push(...fogli(LIV.carg, 'Fogli CARG 1:50.000'), ...fogli(LIV.c100k, "Fogli Carta Geologica d'Italia 1:100.000"));
+    LIVELLI_ARTICOLI.forEach(l => {
+      const jom = nq.length < 3 ? [] : perAnno((l.dati || []).filter(f => norm(f.properties.Title).includes(nq) || norm(f.properties.Location).includes(nq))).slice(0, 8);
       out.push(...jom.map(f => ({ gruppo: l.nome, testo: `${f.properties.Title} (${f.properties.Anno || 's.d.'})`, vai: () => vaiArticolo(f) })));
     });
     return out;
@@ -594,7 +606,7 @@
       mostra(loc, '<li class="meta">Ricerca delle località in corso…</li>');
       const url = 'https://nominatim.openstreetmap.org/search?' + new URLSearchParams({
         q, format: 'jsonv2', countrycodes: 'it', limit: 5, 'accept-language': 'it' });
-      fetch(url).then(r => r.json()).then(ris => {
+      fetch(url).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }).then(ris => {
         const luoghi = ris.map(x => ({ gruppo: 'Località (OpenStreetMap)', testo: x.display_name, vai: () => {
           const [s, n, w, e] = x.boundingbox.map(Number);
           map.fitBounds([[s, w], [n, e]], { maxZoom: 14 }); segna([+x.lat, +x.lon]);
@@ -665,7 +677,6 @@
   };
   legenda.addTo(map);
 </script>
-</script>
-<script data-goatcounter="https://geologiaintasca.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script data-goatcounter="https://geologiaintasca.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>
