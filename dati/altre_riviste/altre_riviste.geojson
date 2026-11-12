@@ -4,6 +4,29 @@
   {
    "type": "Feature",
    "properties": {
+    "Title": "Structural and metamorphic evolution of a subducted passive margin: insights from the Briançonnais nappes of the Western Alps (Ubaye–Maira valleys, France–Italy)",
+    "DOI": "10.1186/s00015-023-00445-0",
+    "URL": "https://doi.org/10.1186/s00015-023-00445-0",
+    "Location": "Acceglio (CN)",
+    "Type": "Research Map",
+    "Rivista": "Swiss Journal of Geosciences",
+    "Anno": 2023,
+    "Licenza": "CC BY 4.0",
+    "Precisione": "Comune",
+    "Fonte": "Pagina dell'articolo (metadati); localizzazione manuale (Geologiaintasca)",
+    "Dettagli": "**Rivista:** Swiss Journal of Geosciences\n**Luogo:** Acceglio (CN)\n**Anno:** 2023\n**Licenza:** CC BY 4.0\n**Posizione:** centroide del comune indicato dal curatore\n[[https://doi.org/10.1186/s00015-023-00445-0|Articolo (DOI)]]"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     6.9503,
+     44.4873
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
     "Title": "Mapping the geology of the 2016 Central Italy earthquake fault (Mt. Vettore – Mt. Bove fault, Sibillini Mts.): geological details on the Cupi – Ussita and Mt. Bove – Mt. Porche segments and overall pattern of coseismic surface faulting",
     "DOI": "10.3301/GFT.2019.03",
     "URL": "https://doi.org/10.3301/GFT.2019.03",
