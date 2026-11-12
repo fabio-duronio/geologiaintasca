@@ -5045,14 +5045,21 @@
     "Title": "Transgressive dune system of Piscinas, Western Sardinia (Italy)",
     "DOI": "10.1080/17445647.2026.2675564",
     "URL": "https://doi.org/10.1080/17445647.2026.2675564",
-    "Location": "Piscinas (CI)",
+    "Location": "Piscinas, Arbus (SU)",
     "Type": "Research Map",
     "Anno": 2026,
     "Licenza": "CC BY 4.0",
-    "Precisione": "Comune",
-    "Fonte": "Crossref (metadati); localizzazione automatica dal titolo, confini ISTAT",
-    "Dettagli": "**Luogo:** Piscinas (CI)\n**Anno:** 2026\n**Licenza:** CC BY 4.0\n**Posizione:** centroide del comune citato nel titolo\n[[https://doi.org/10.1080/17445647.2026.2675564|Articolo (DOI)]]"
+    "Precisione": "Sito",
+    "Fonte": "Crossref (metadati); localizzazione manuale dal testo (§2 Study area, centroide UTM 32N 453370E 4376487N)",
+    "Dettagli": "**Luogo:** Piscinas, Arbus (SU)\n**Anno:** 2026\n**Licenza:** CC BY 4.0\n**Posizione:** sito di studio indicato nel paper\n[[https://doi.org/10.1080/17445647.2026.2675564|Articolo (DOI)]]"
    },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     8.45319,
+     39.54036
+    ]
+   }
    "geometry": {
     "type": "Point",
     "coordinates": [
