@@ -4,6 +4,29 @@
   {
    "type": "Feature",
    "properties": {
+    "Title": "Internal geometry of the central Sesia Zone (Aosta Valley, Italy): HP tectonic assembly of continental slices",
+    "DOI": "10.1007/s00015-016-0225-4",
+    "URL": "https://doi.org/10.1007/s00015-016-0225-4",
+    "Location": "Pont-Saint-Martin (AO)",
+    "Type": "Research Map",
+    "Rivista": "Swiss Journal of Geosciences",
+    "Anno": 2016,
+    "Licenza": "© 2016 Swiss Geological Society (Springer Nature)",
+    "Precisione": "Comune",
+    "Fonte": "Pagina dell'articolo (metadati); localizzazione manuale (Geologiaintasca)",
+    "Dettagli": "**Rivista:** Swiss Journal of Geosciences\n**Luogo:** Pont-Saint-Martin (AO)\n**Anno:** 2016\n**Licenza:** © 2016 Swiss Geological Society (Springer Nature)\n**Posizione:** centroide del comune indicato dal curatore\n[[https://doi.org/10.1007/s00015-016-0225-4|Articolo (DOI)]]"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     7.8118,
+     45.599
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
     "Title": "Structural and metamorphic evolution of a subducted passive margin: insights from the Briançonnais nappes of the Western Alps (Ubaye–Maira valleys, France–Italy)",
     "DOI": "10.1186/s00015-023-00445-0",
     "URL": "https://doi.org/10.1186/s00015-023-00445-0",
