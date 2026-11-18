@@ -799,19 +799,19 @@
     "Title": "Quaternary geology of the Middle Aterno Valley, 2009 L'Aquila earthquake area (Abruzzi Apennines, Italy)",
     "DOI": "10.1080/17445647.2014.927128",
     "URL": "https://doi.org/10.1080/17445647.2014.927128",
-    "Location": "L'Aquila (AQ)",
+    "Location": "San Demetrio ne' Vestini (AQ)",
     "Type": "Research Map",
     "Anno": 2014,
     "Licenza": "Non indicata in Crossref",
     "Precisione": "Comune",
-    "Fonte": "Crossref (metadati); localizzazione automatica dal titolo, confini ISTAT",
-    "Dettagli": "**Luogo:** L'Aquila (AQ)\n**Anno:** 2014\n**Licenza:** Non indicata in Crossref\n**Posizione:** centroide del comune citato nel titolo\n[[https://doi.org/10.1080/17445647.2014.927128|Articolo (DOI)]]"
+    "Fonte": "Crossref (metadati); localizzazione manuale (Geologiaintasca)",
+    "Dettagli": "**Luogo:** San Demetrio ne' Vestini (AQ)\n**Anno:** 2014\n**Licenza:** Non indicata in Crossref\n**Posizione:** centroide del comune indicato dal curatore\n[[https://doi.org/10.1080/17445647.2014.927128|Articolo (DOI)]]"
    },
    "geometry": {
     "type": "Point",
     "coordinates": [
-     13.4252,
-     42.3961
+     13.5556,
+     42.2835
     ]
    }
   },
