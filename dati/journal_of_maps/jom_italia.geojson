@@ -1965,19 +1965,19 @@
     "Title": "Geology of the Pergola–Melandro basin area, Southern Apennines, Italy",
     "DOI": "10.1080/17445647.2016.1245633",
     "URL": "https://doi.org/10.1080/17445647.2016.1245633",
-    "Location": "Marsico Nuovo (PZ)",
+    "Location": "Brienza (PZ)",
     "Type": "Research Map",
     "Anno": 2016,
     "Licenza": "CC BY 4.0",
     "Precisione": "Comune",
     "Fonte": "Crossref (metadati); localizzazione manuale (Geologiaintasca)",
-    "Dettagli": "**Luogo:** Marsico Nuovo (PZ)\n**Anno:** 2016\n**Licenza:** CC BY 4.0\n**Posizione:** centroide del comune indicato dal curatore\n[[https://doi.org/10.1080/17445647.2016.1245633|Articolo (DOI)]]"
+    "Dettagli": "**Luogo:** Brienza (PZ)\n**Anno:** 2016\n**Licenza:** CC BY 4.0\n**Posizione:** centroide del comune indicato dal curatore\n[[https://doi.org/10.1080/17445647.2016.1245633|Articolo (DOI)]]"
    },
    "geometry": {
     "type": "Point",
     "coordinates": [
-     15.7325,
-     40.424
+     15.609,
+     40.4795
     ]
    }
   },
