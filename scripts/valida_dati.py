@@ -190,9 +190,9 @@ def controlla_csv_jom():
                 if not doi:
                     continue
                 if doi in visti:
-                    segnala("E", f"dati/journal_of_maps/{nome}", f"riga {n}: DOI {doi} già in {visti[doi]}")
+                    segnala("E", f"dati/journal_of_maps/{nome}", f"riga {n}: DOI {doi} già in {visti[doi][0]} | nuova: {r.get('Comune')}: {(r.get('Note') or '')[:70]} | esistente: {visti[doi][1]}")
                 else:
-                    visti[doi] = f"{nome} riga {n}"
+                    visti[doi] = (f"{nome} riga {n}", f"{r.get('Comune')}: {(r.get('Note') or '')[:70]}")
 
 
 def main():
