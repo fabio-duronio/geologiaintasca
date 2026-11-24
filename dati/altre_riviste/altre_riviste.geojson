@@ -50,29 +50,6 @@
   {
    "type": "Feature",
    "properties": {
-    "Title": "Geological map of the Mt. Soratte ridge (Central Apennines, Latium, Italy)",
-    "DOI": "10.330/GFT.2025.05",
-    "URL": "https://doi.org/10.330/GFT.2025.05",
-    "Location": "Sant'Oreste (RM)",
-    "Type": "Research Map",
-    "Rivista": "Geological Field Trips and Maps",
-    "Anno": 2025,
-    "Licenza": "CC BY 4.0",
-    "Precisione": "Comune",
-    "Fonte": "Pagina dell'articolo (metadati); localizzazione manuale (Geologiaintasca)",
-    "Dettagli": "**Rivista:** Geological Field Trips and Maps\n**Luogo:** Sant'Oreste (RM)\n**Anno:** 2025\n**Licenza:** CC BY 4.0\n**Posizione:** centroide del comune indicato dal curatore\n[[https://doi.org/10.330/GFT.2025.05|Articolo (DOI)]]"
-   },
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     12.5218,
-     42.2384
-    ]
-   }
-  },
-  {
-   "type": "Feature",
-   "properties": {
     "Title": "Mapping the geology of the 2016 Central Italy earthquake fault (Mt. Vettore – Mt. Bove fault, Sibillini Mts.): geological details on the Cupi – Ussita and Mt. Bove – Mt. Porche segments and overall pattern of coseismic surface faulting",
     "DOI": "10.3301/GFT.2019.03",
     "URL": "https://doi.org/10.3301/GFT.2019.03",
@@ -136,6 +113,29 @@
     "coordinates": [
      13.309,
      41.8136
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "Title": "Geological map of the Mt. Soratte ridge (Central Apennines, Latium, Italy)",
+    "DOI": "10.3301/GFT.2025.05",
+    "URL": "https://doi.org/10.3301/GFT.2025.05",
+    "Location": "Sant'Oreste (RM)",
+    "Type": "Research Map",
+    "Rivista": "Geological Field Trips and Maps",
+    "Anno": 2025,
+    "Licenza": "CC BY 4.0",
+    "Precisione": "Comune",
+    "Fonte": "Pagina dell'articolo (metadati); localizzazione manuale (Geologiaintasca)",
+    "Dettagli": "**Rivista:** Geological Field Trips and Maps\n**Luogo:** Sant'Oreste (RM)\n**Anno:** 2025\n**Licenza:** CC BY 4.0\n**Posizione:** centroide del comune indicato dal curatore\n[[https://doi.org/10.3301/GFT.2025.05|Articolo (DOI)]]"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     12.5218,
+     42.2384
     ]
    }
   },
